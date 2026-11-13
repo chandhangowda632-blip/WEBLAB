@@ -1,0 +1,539 @@
+
+/* ==============================
+   GLOBAL STYLES
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #eaf7ee;
+    color: #183326;
+    overflow-x: hidden;
+}
+
+/* ==============================
+   BACKGROUND ANIMATION
+============================== */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    z-index: -1;
+    animation: float 9s infinite alternate ease-in-out;
+}
+
+body::before {
+    background: #22c55e;
+    top: 10%;
+    left: -100px;
+}
+
+body::after {
+    background: #86efac;
+    bottom: 5%;
+    right: -100px;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(100px, 80px);
+    }
+}
+
+/* ==============================
+   HEADER AND NAVIGATION
+============================== */
+
+header {
+    background: rgba(20, 83, 45, 0.96);
+    backdrop-filter: blur(15px);
+    padding: 22px;
+    text-align: center;
+    border-bottom: 1px solid #86b99a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h2 {
+    color: white;
+    letter-spacing: 3px;
+    font-size: 23px;
+}
+
+header h2 span {
+    color: #86efac;
+}
+
+nav {
+    margin-top: 18px;
+}
+
+nav button {
+    padding: 11px 24px;
+    margin: 5px;
+    background: transparent;
+    color: white;
+    border: 1px solid #86b99a;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+nav button:hover,
+nav button.selected {
+    background: linear-gradient(90deg, #15803d, #4ade80);
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px #16a34a66;
+}
+
+/* ==============================
+   PAGE SECTIONS
+============================== */
+
+section {
+    display: none;
+    width: 88%;
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #c5e5d0;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px #0002;
+}
+
+section.active {
+    display: block;
+    animation: appear 0.7s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   HEADINGS AND PARAGRAPHS
+============================== */
+
+h1 {
+    text-align: center;
+    color: #166534;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #15803d;
+    margin: 28px 0 15px;
+}
+
+p {
+    line-height: 1.8;
+    color: #365344;
+}
+
+/* ==============================
+   HOME PAGE
+============================== */
+
+.home {
+    text-align: left;
+    padding: 75px 55px;
+}
+
+.home-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 45px;
+}
+
+.home-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.home-content h1 {
+    text-align: left;
+}
+
+.home-content p {
+    margin: 20px 0;
+}
+
+.home-photo {
+    flex: 0 0 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home h1 {
+    font-size: 42px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #bbf7d0;
+    }
+
+    to {
+        text-shadow: 0 0 25px #4ade80;
+    }
+}
+
+.home h2 {
+    font-size: 28px;
+    color: #166534;
+}
+
+.home p {
+    max-width: 650px;
+    margin: 20px 0;
+    font-size: 17px;
+}
+
+.tagline {
+    color: #16a34a;
+    letter-spacing: 2px;
+    margin-top: 15px;
+}
+
+/* ==============================
+   ACTION BUTTONS
+============================== */
+
+.action-btn {
+    background: linear-gradient(90deg, #15803d, #22c55e);
+    color: white;
+    padding: 13px 25px;
+    border: none;
+    margin: 15px 8px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.action-btn:hover {
+    transform: scale(1.07);
+    box-shadow: 0 5px 20px #4ade8088;
+}
+
+/* ==============================
+   PROFILE PHOTO
+============================== */
+
+.profile-area {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.profile-photo-container {
+    width: 250px;
+    height: 250px;
+    padding: 9px;
+    position: relative;
+    border: 3px solid #22c55e;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #bbf7d0, #dcfce7);
+    box-shadow: 0 0 28px #16a34a66;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.profile-photo-container:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 0 36px #16a34a99;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #dcfce7;
+}
+
+.photo-placeholder {
+    position: absolute;
+    inset: 9px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-radius: 50%;
+    color: #166534;
+    background: #f0fdf4;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.photo-placeholder span:first-child {
+    font-size: 42px;
+}
+
+/* ==============================
+   CONTENT CARDS
+============================== */
+
+.content-card {
+    background: #f0fdf4;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 15px 0;
+    border-left: 4px solid #16a34a;
+    transition: 0.3s;
+}
+
+.content-card:hover {
+    transform: translateX(7px);
+    background: #dcfce7;
+}
+
+.content-card p {
+    margin: 5px 0;
+}
+
+/* ==============================
+   TABLES
+============================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+th,
+td {
+    border: 1px solid #bbdfc7;
+    padding: 14px;
+    text-align: left;
+}
+
+th {
+    background: #15803d;
+    color: white;
+}
+
+td {
+    background: #f0fdf4;
+    color: #365344;
+}
+
+tr:hover td {
+    background: #dcfce7;
+}
+
+/* ==============================
+   LISTS
+============================== */
+
+ul {
+    margin-left: 25px;
+    line-height: 2.3;
+    color: #365344;
+}
+
+li::marker {
+    color: #16a34a;
+}
+
+/* ==============================
+   TECHNICAL SKILLS
+============================== */
+
+.skill-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.skill-box {
+    background: #dcfce7;
+    color: #166534;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid #bbdfc7;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.skill-box:hover {
+    transform: translateY(-8px);
+    background: linear-gradient(135deg, #bbf7d0, #86efac);
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+    background: #14532d;
+    color: white;
+    text-align: center;
+    padding: 22px;
+    margin-top: 50px;
+    border-top: 1px solid #2f6b46;
+}
+
+footer p {
+    color: #dcfce7;
+}
+
+/* ==============================
+   PRINT RESUME
+============================== */
+
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    body::before,
+    body::after,
+    header,
+    footer,
+    .action-btn,
+    #home,
+    #biodata {
+        display: none !important;
+    }
+
+    #resume {
+        display: block !important;
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        background: white;
+        color: black;
+        box-shadow: none;
+        border: none;
+    }
+
+    #resume h1,
+    #resume h2,
+    #resume p,
+    #resume li,
+    #resume td {
+        color: black;
+    }
+
+    #resume th {
+        background: #ddd !important;
+        color: black;
+    }
+
+    #resume td {
+        background: white;
+    }
+}
+
+/* ==============================
+   MOBILE RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 600px) {
+
+    section {
+        width: 95%;
+        padding: 20px;
+        margin: 25px auto;
+    }
+
+    header h2 {
+        font-size: 18px;
+    }
+
+    nav button {
+        padding: 9px 13px;
+        font-size: 12px;
+    }
+
+    .home h1 {
+        font-size: 29px;
+    }
+
+    .home {
+        padding: 40px 20px;
+    }
+
+    .home-layout {
+        flex-direction: column-reverse;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .home-content {
+        width: 100%;
+    }
+
+    .home-content h1 {
+        text-align: center;
+    }
+
+    .home-content p {
+        margin: 20px auto;
+    }
+
+    .home-photo {
+        flex: 0 0 auto;
+    }
+
+    .profile-photo-container {
+        width: 205px;
+        height: 205px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+}
